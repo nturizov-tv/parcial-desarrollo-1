@@ -24,12 +24,7 @@ Página de una tienda ficticia de maquillaje, con diseño minimalista inspirado 
     └── img/                  Imágenes SVG de las paletas
 ```
 
-## Cómo ejecutarlo
 
-1. Abre la carpeta en **Visual Studio Code**.
-2. Con la extensión **Live Server**, haz clic derecho sobre `index.html` y elige *Open with Live Server*.
-
-No requiere instalar dependencias ni compilar nada.
 
 ## El componente `<tarjeta-producto>`
 
@@ -67,14 +62,6 @@ No requiere instalar dependencias ni compilar nada.
   document.addEventListener('agregar-carrito', (e) => console.log(e.detail));
 </script>
 ```
-
-## Cumplimiento de los requisitos del taller
-
-- **3 o más props:** recibe 5 atributos (`sku`, `imagen`, `titulo`, `descripcion`, `precio`).
-- **1 o más eventos:** emite 2 eventos personalizados (`agregar-carrito` y `ver-detalle`).
-- **Reutilizable:** se usa 6 veces en `index.html` con datos diferentes.
-- **Responsivo:** rejilla de 3, 2 o 1 columnas según el ancho, y diálogos adaptados a móvil.
-
 ## Tecnologías
 
 HTML5, CSS3 (variables, grid, `backdrop-filter`), JavaScript ES6+ (Custom Elements, Shadow DOM, `<dialog>`).
