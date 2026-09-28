@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Lúmina: paletas de sombras en seis colecciones. Proyecto del primer parcial de Desarrollo de Aplicaciones Web." />
+  <title>Lúmina, paletas de sombras</title>
+  <link rel="icon" type="image/svg+xml" href="assets/img/favicon.svg" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script src="js/tarjeta-producto.js" defer></script>
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="nav__interior">
+      <a class="nav__marca" href="#inicio">Lúmina</a>
+      <nav class="nav__enlaces" aria-label="Principal">
+        <a href="#coleccion">Colección</a>
+        <a href="#cuidado">Cuidado</a>
+      </nav>
+      <button class="nav__bolsa" id="btn-bolsa" type="button" aria-label="Abrir la bolsa">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M5 8h14l-1 12H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>
+        </svg>
+        <span class="nav__contador" id="contador" hidden>0</span>
+      </button>
+    </div>
+  </header>
+
+  <main id="inicio">
+
+    <section class="hero">
+      <h1 class="hero__titulo">Una paleta para cada mirada.</h1>
+      <p class="hero__texto">Seis colecciones de sombras con pigmento suave, fáciles de difuminar y pensadas para combinar entre sí.</p>
+      <a class="boton" href="#coleccion">Ver la colección</a>
+      <img class="hero__imagen" src="assets/img/hero.svg" alt="Tres paletas de sombras abiertas: Cuarzo, Amanecer y Medianoche" width="1600" height="720" />
+    </section>
+
+    <section class="coleccion" id="coleccion">
+      <div class="coleccion__interior">
+        <h2 class="coleccion__titulo">La colección</h2>
+        <p class="coleccion__texto">Doce tonos por paleta, entre mates y satinados.</p>
+
+        <!-- Mismo componente, seis veces, con datos distintos -->
+        <div class="rejilla">
+          <tarjeta-producto
+            sku="LUM-001"
+            imagen="assets/img/amanecer.svg"
+            titulo="Amanecer"
+            descripcion="Doce tonos cálidos entre durazno y terracota, del día a la noche con una sola paleta."
+            precio="89000">
+          </tarjeta-producto>
+
+          <tarjeta-producto
+            sku="LUM-002"
+            imagen="assets/img/cuarzo.svg"
+            titulo="Cuarzo"
+            descripcion="Rosados y malvas de acabado satinado para un rubor suave en los párpados."
+            precio="84000">
+          </tarjeta-producto>
+
+          <tarjeta-producto
+            sku="LUM-003"
+            imagen="assets/img/medianoche.svg"
+            titulo="Medianoche"
+            descripcion="Azules profundos con destellos plateados para una mirada intensa."
+            precio="96000">
+          </tarjeta-producto>
+
+          <tarjeta-producto
+            sku="LUM-004"
+            imagen="assets/img/bosque.svg"
+            titulo="Bosque"
+            descripcion="Verdes musgo y oliva con un toque dorado. Textura sedosa y fácil de difuminar."
+            precio="92000">
+          </tarjeta-producto>
+
+          <tarjeta-producto
+            sku="LUM-005"
+            imagen="assets/img/atardecer.svg"
+            titulo="Atardecer"
+            descripcion="Corales, naranjas y bayas que se funden como el cielo a las seis de la tarde."
+            precio="88000">
+          </tarjeta-producto>
+
+          <tarjeta-producto
+            sku="LUM-006"
+            imagen="assets/img/cacao.svg"
+            titulo="Cacao"
+            descripcion="Neutros suaves, del beige al chocolate. La base para todos los días."
+            precio="79000">
+          </tarjeta-producto>
+        </div>
+      </div>
+    </section>
+
+    <section class="cuidado" id="cuidado">
+      <h2 class="cuidado__titulo">Aplica con calma.</h2>
+      <p class="cuidado__texto">Empieza con el tono más claro en todo el párpado, marca la profundidad en la esquina externa y difumina con movimientos cortos. Dos capas finas rinden más que una gruesa.</p>
+    </section>
+
+  </main>
+
+  <footer class="pie">
+    <p>Proyecto académico del primer parcial de Desarrollo de Aplicaciones Web y Sistemas Operativos, Universidad Francisco de Paula Santander Ocaña.</p>
+  </footer>
+
+  <!-- Bolsa -->
+  <dialog class="hoja" id="dlg-bolsa" aria-labelledby="bolsa-titulo">
+    <div class="hoja__cabecera">
+      <h2 id="bolsa-titulo">Tu bolsa</h2>
+      <button class="hoja__cerrar" type="button" data-cerrar aria-label="Cerrar la bolsa">✕</button>
+    </div>
+    <ul class="bolsa__lista" id="bolsa-lista"></ul>
+    <p class="bolsa__vacia" id="bolsa-vacia">Tu bolsa está vacía. Agrega una paleta desde la colección.</p>
+    <div class="bolsa__pie" id="bolsa-pie" hidden>
+      <p class="bolsa__total"><span>Total</span> <strong id="bolsa-total">$ 0</strong></p>
+      <button class="boton boton--secundario" type="button" id="btn-vaciar">Vaciar la bolsa</button>
+    </div>
+  </dialog>
+
+  <!-- Detalle de producto -->
+  <dialog class="modal" id="dlg-detalle" aria-labelledby="detalle-titulo">
+    <button class="hoja__cerrar" type="button" data-cerrar aria-label="Cerrar el detalle">✕</button>
+    <img class="modal__imagen" id="detalle-imagen" alt="" />
+    <div class="modal__contenido">
+      <h2 id="detalle-titulo"></h2>
+      <p id="detalle-descripcion"></p>
+      <p class="modal__precio" id="detalle-precio"></p>
+      <button class="boton" type="button" id="detalle-agregar">Agregar a la bolsa</button>
+    </div>
+  </dialog>
+
+  <div class="aviso" id="aviso" role="status" aria-live="polite"></div>
+
+</body>
+</html>
